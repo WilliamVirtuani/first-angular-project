@@ -10,8 +10,10 @@ import { HeroService } from '../hero.service';
 export class HeroesComponent implements OnInit {
   selectedHero: Hero = { id: 0, name: '' };
   heroes: Hero[] = [];
+  data: Date = new Date()
 
-  constructor(private heroService: HeroService) {}
+
+  constructor(private heroService: HeroService) { }
 
   onSelect(hero: Hero) {
     console.log('hero', hero);
@@ -24,5 +26,6 @@ export class HeroesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHeroes();
+    console.log("caricato")
   }
 }
