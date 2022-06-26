@@ -10,7 +10,7 @@ import { HeroService } from '../hero.service';
   styleUrls: ['./hero-detail.component.css'],
 })
 export class HeroDetailComponent implements OnInit {
-  @Input() hero: Hero | undefined = { id: 0, name: '' };
+  @Input() hero: Hero = { id: 0, name: '' };
 
   constructor(
     private route: ActivatedRoute,
@@ -28,6 +28,11 @@ export class HeroDetailComponent implements OnInit {
     }
     this.heroService.getHero(id)
       .subscribe(hero => this.hero = hero);
+  }
+
+  save(): void {
+    this.heroService.updateHero(this.hero)
+      .subscribe(() => this.goBack());
   }
 
   goBack(): void {
